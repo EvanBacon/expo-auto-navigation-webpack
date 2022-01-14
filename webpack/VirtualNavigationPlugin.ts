@@ -4,14 +4,17 @@ import { join } from "path";
 import { Compiler, Plugin } from "webpack";
 import VirtualModulesPlugin from "webpack-virtual-modules";
 
-const defaultModule = `const { load } = require('@expo/auto-nav');
+const defaultModule = `const { load, getDefaultOptions } = require('@expo/auto-nav');
 
 export default load({
     // for pages
     context: require.context('./', false, /^((?!_nav).)*\\.[jt]sx?$/, 'sync'),
     // for folders
     deep: require.context('./', true, /\\/*.\\/_nav\\.[jt]sx?$/, 'sync'),
-    config: () => require('./_nav.json'),
+    config: () => {
+      const ctx = require.context('./', false, /_nav\.json$/, 'sync');
+      return ctx.keys().length > 0 ? ctx(ctx.keys()[0]) : getDefaultOptions();
+    },
 })`;
 /**
  * Convert any asset type to a JS code block that uses React Native's AssetRegistry module.

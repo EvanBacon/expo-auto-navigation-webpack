@@ -14,6 +14,8 @@ yarn ios
 
 Reload the app manually with `r` in the console, or shaking the device.
 
+> Expo Webpack is in Beta (especially for native platforms) and subject to breaking changes.
+
 ## Idea
 
 The goal of this project is to enable users to go from a single page app to an app with truly native navigation in a seamless flow.
