@@ -10,12 +10,7 @@ import Navigation from './screens/_root';
 import { LogBox } from 'react-native';
 
 LogBox.ignoreAllLogs()
-// LogBox.ignoreLogs([/Unhandled promise rejection/])
-// import Navigation from './navigation';
 
-// import { createStackNavigator } from '@react-navigation/stack';
-
-// const stack = createStackNavigator();
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
